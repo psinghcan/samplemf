@@ -130,7 +130,8 @@ public class MemoFeesBean implements Serializable {
     
     public List<MemoFeesEntity> getMemoFeesList() {
         if (memoFeesList == null) {
-            memoFeesList = memoFeesService.findAllMemoFeesEntities();
+//            memoFeesList = memoFeesService.findAllMemoFeesEntities();
+            memoFeesList = memoFeesService.findAllMemoFeesEntitiesYearMonth(2020, 12);
         }
         return memoFeesList;
     }

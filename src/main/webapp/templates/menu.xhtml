@@ -8,17 +8,11 @@
   <h:form>
   <p:menu>
     <p:submenu label="#{messages.menu_pages}">
-      
-      <p:menuitem value="#{messages.menu_productExamples}" outcome="/pages/productExample/productExample.xhtml" icon="icon-entity" ajax="false" async="false" />
-      
+
       <p:menuitem value="#{messages.menu_memoFeess}" outcome="/pages/memoFees/memoFees.xhtml" icon="icon-entity" ajax="false" async="false" />
       
     </p:submenu>
-    
-    <p:submenu label="#{messages.menu_admin}" rendered="#{p:ifGranted('Administrator')}">
-      <p:menuitem value="#{messages.menu_user_management}" outcome="/pages/admin/user.xhtml" icon="ui-icon-person" ajax="false" async="false"/>
-    </p:submenu>
-    
+
   </p:menu>
   </h:form>
 </ui:composition>

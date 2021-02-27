@@ -24,6 +24,15 @@ public class MemoFeesService implements Serializable {
         return entityManager.createQuery("SELECT o FROM memofees o ", MemoFeesEntity.class).getResultList();
     }
 
+    @Transactional
+    public List<MemoFeesEntity> findAllMemoFeesEntitiesYearMonth(int year, int month) {
+        String query = "SELECT o FROM memofees o where o.invoiceYear = :year and o.invoiceMonth = :month";
+        return entityManager.createQuery(query)
+                .setParameter("year", year)
+                .setParameter("month", month)
+                .getResultList();
+    }
+
 
     
     @Transactional
