@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:o="http://omnifaces.org/ui">
+
+    <p:outputPanel styleClass="ui-fluid" rendered="#{not memoFeesBean.isPermitted(memoFeesBean.memoFees, 'memoFees:read')}">
+        <h:outputText value="#{messages.access_denied}" />
+    </p:outputPanel>
+    
+    <h:panelGrid columns="2" styleClass="dialog" columnClasses="col1,col2" rendered="#{memoFeesBean.isPermitted(memoFeesBean.memoFees, 'memoFees:read')}">
+        
+        <h:outputText value="#{messages.field_label_memoFees_invoiceYear}:" />
+        <h:outputText value="#{memoFeesBean.memoFees.invoiceYear}" />
+
+        <h:outputText value="#{messages.field_label_memoFees_invoiceMonth}:" />
+        <h:outputText value="#{memoFeesBean.memoFees.invoiceMonth}" />
+
+        <h:outputText value="#{messages.field_label_memoFees_creationDate}:" />
+        <h:outputText value="#{memoFeesBean.memoFees.creationDate}" ><f:convertDateTime /></h:outputText>
+
+        <h:outputText value="#{messages.field_label_memoFees_invoiceDate}:" />
+        <h:outputText value="#{memoFeesBean.memoFees.invoiceDate}" ><f:convertDateTime /></h:outputText>
+
+        <h:outputText value="#{messages.field_label_memoFees_franchiseId}:" />
+        <h:outputText value="#{memoFeesBean.memoFees.franchiseId}" />
+
+        <h:outputText value="#{messages.field_label_memoFees_franchiseNumber}:" />
+        <h:outputText value="#{memoFeesBean.memoFees.franchiseNumber}" />
+
+        <h:outputText value="#{messages.field_label_memoFees_franchiseStateProvinceId}:" />
+        <h:outputText value="#{memoFeesBean.memoFees.franchiseStateProvinceId}" />
+
+        <h:outputText value="#{messages.field_label_memoFees_franchiseCountry}:" />
+        <h:outputText value="#{memoFeesBean.memoFees.franchiseCountry}" />
+
+        <h:outputText value="#{messages.field_label_memoFees_amStatus}:" />
+        <h:outputText value="#{memoFeesBean.memoFees.amStatus}" />
+
+        <h:outputText value="#{messages.field_label_memoFees_arCuid}:" />
+        <h:outputText value="#{memoFeesBean.memoFees.arCuid}" />
+
+        <h:outputText value="#{messages.field_label_memoFees_arInvoiceNumber}:" />
+        <h:outputText value="#{memoFeesBean.memoFees.arInvoiceNumber}" />
+
+        <h:outputText value="#{messages.field_label_memoFees_amount}:" />
+        <h:outputText value="#{memoFeesBean.memoFees.amount}" ><f:convertNumber /></h:outputText>
+
+        <h:outputText value="#{messages.field_label_memoFees_taxes}:" />
+        <h:outputText value="#{memoFeesBean.memoFees.taxes}" ><f:convertNumber /></h:outputText>
+
+        <h:outputText value="#{messages.field_label_memoFees_achStatusId}:" />
+        <h:outputText value="#{memoFeesBean.memoFees.achStatusId}" />
+
+        <h:outputText value="#{messages.field_label_memoFees_ecollectStatusId}:" />
+        <h:outputText value="#{memoFeesBean.memoFees.ecollectStatusId}" />
+
+        <h:outputText value="#{messages.field_label_memoFees_checkNumber}:" />
+        <h:outputText value="#{memoFeesBean.memoFees.checkNumber}" />
+
+        <h:outputText value="#{messages.field_label_memoFees_arReceiptNumber}:" />
+        <h:outputText value="#{memoFeesBean.memoFees.arReceiptNumber}" />
+
+        <h:outputText value="#{messages.field_label_memoFees_invoicePaymentDate}:" />
+        <h:outputText value="#{memoFeesBean.memoFees.invoicePaymentDate}" ><f:convertDateTime /></h:outputText>
+
+        <h:outputText value="#{messages.field_label_memoFees_creditStatusId}:" />
+        <h:outputText value="#{memoFeesBean.memoFees.creditStatusId}" />
+
+        <h:outputText value="#{messages.field_label_memoFees_creditInvoiceNumber}:" />
+        <h:outputText value="#{memoFeesBean.memoFees.creditInvoiceNumber}" />
+
+        <h:outputText value="#{messages.field_label_memoFees_creditInvoiceDate}:" />
+        <h:outputText value="#{memoFeesBean.memoFees.creditInvoiceDate}" ><f:convertDateTime /></h:outputText>
+
+    </h:panelGrid>
+</html>

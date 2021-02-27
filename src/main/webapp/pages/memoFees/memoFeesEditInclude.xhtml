@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:o="http://omnifaces.org/ui">
+
+        <p:outputPanel styleClass="ui-fluid">
+
+            <p:panelGrid columns="3" columnClasses="ui-grid-col-4,ui-grid-col-6,ui-grid-col-2" layout="grid" style="max-width:400px">
+            
+                <h:outputLabel value="#{messages.field_label_memoFees_invoiceYear}:" for="invoiceYearEditInput" />
+                <p:inputText value="#{memoFeesBean.memoFees.invoiceYear}"  id="invoiceYearEditInput" 
+                    label="#{messages.field_label_memoFees_invoiceYear}" />
+                <p:message for="invoiceYearEditInput" display="icon" />
+
+                <h:outputLabel value="#{messages.field_label_memoFees_invoiceMonth}:" for="invoiceMonthEditInput" />
+                <p:inputText value="#{memoFeesBean.memoFees.invoiceMonth}"  id="invoiceMonthEditInput" 
+                    label="#{messages.field_label_memoFees_invoiceMonth}" />
+                <p:message for="invoiceMonthEditInput" display="icon" />
+
+                <h:outputLabel value="#{messages.field_label_memoFees_creationDate}:" for="creationDateEditInput" />
+                <p:calendar id="creationDateEditInput" navigator="true" value="#{memoFeesBean.memoFees.creationDate}" label="#{messages.field_label_memoFees_creationDate}" />
+                <p:message for="creationDateEditInput" display="icon" />
+
+                <h:outputLabel value="#{messages.field_label_memoFees_invoiceDate}:" for="invoiceDateEditInput" />
+                <p:calendar id="invoiceDateEditInput" navigator="true" value="#{memoFeesBean.memoFees.invoiceDate}" label="#{messages.field_label_memoFees_invoiceDate}" />
+                <p:message for="invoiceDateEditInput" display="icon" />
+
+                <h:outputLabel value="#{messages.field_label_memoFees_franchiseId}:" for="franchiseIdEditInput" />
+                <p:inputText value="#{memoFeesBean.memoFees.franchiseId}"  id="franchiseIdEditInput" 
+                    label="#{messages.field_label_memoFees_franchiseId}" />
+                <p:message for="franchiseIdEditInput" display="icon" />
+
+                <h:outputLabel value="#{messages.field_label_memoFees_franchiseNumber}:" for="franchiseNumberEditInput" />
+                <p:inputText value="#{memoFeesBean.memoFees.franchiseNumber}" id="franchiseNumberEditInput" 
+                    label="#{messages.field_label_memoFees_franchiseNumber}" />
+                <p:message for="franchiseNumberEditInput" display="icon" />
+
+                <h:outputLabel value="#{messages.field_label_memoFees_franchiseStateProvinceId}:" for="franchiseStateProvinceIdEditInput" />
+                <p:inputText value="#{memoFeesBean.memoFees.franchiseStateProvinceId}" id="franchiseStateProvinceIdEditInput" 
+                    label="#{messages.field_label_memoFees_franchiseStateProvinceId}" />
+                <p:message for="franchiseStateProvinceIdEditInput" display="icon" />
+
+                <h:outputLabel value="#{messages.field_label_memoFees_franchiseCountry}:" for="franchiseCountryEditInput" />
+                <p:inputText value="#{memoFeesBean.memoFees.franchiseCountry}" id="franchiseCountryEditInput" 
+                    label="#{messages.field_label_memoFees_franchiseCountry}" />
+                <p:message for="franchiseCountryEditInput" display="icon" />
+
+                <h:outputLabel value="#{messages.field_label_memoFees_amStatus}:" for="amStatusEditInput" />
+                <p:inputText value="#{memoFeesBean.memoFees.amStatus}" id="amStatusEditInput" 
+                    label="#{messages.field_label_memoFees_amStatus}" />
+                <p:message for="amStatusEditInput" display="icon" />
+
+                <h:outputLabel value="#{messages.field_label_memoFees_arCuid}:" for="arCuidEditInput" />
+                <p:inputText value="#{memoFeesBean.memoFees.arCuid}" id="arCuidEditInput" 
+                    label="#{messages.field_label_memoFees_arCuid}" />
+                <p:message for="arCuidEditInput" display="icon" />
+
+                <h:outputLabel value="#{messages.field_label_memoFees_arInvoiceNumber}:" for="arInvoiceNumberEditInput" />
+                <p:inputText value="#{memoFeesBean.memoFees.arInvoiceNumber}" id="arInvoiceNumberEditInput" 
+                    label="#{messages.field_label_memoFees_arInvoiceNumber}" />
+                <p:message for="arInvoiceNumberEditInput" display="icon" />
+
+                <h:outputLabel value="#{messages.field_label_memoFees_amount}:" for="amountEditInput" />
+                <p:inputText value="#{memoFeesBean.memoFees.amount}" id="amountEditInput" label="#{messages.field_label_memoFees_amount}" >
+                    <f:convertNumber />
+                </p:inputText>
+                <p:message for="amountEditInput" display="icon" />
+
+                <h:outputLabel value="#{messages.field_label_memoFees_taxes}:" for="taxesEditInput" />
+                <p:inputText value="#{memoFeesBean.memoFees.taxes}" id="taxesEditInput" label="#{messages.field_label_memoFees_taxes}" >
+                    <f:convertNumber />
+                </p:inputText>
+                <p:message for="taxesEditInput" display="icon" />
+
+                <h:outputLabel value="#{messages.field_label_memoFees_achStatusId}:" for="achStatusIdEditInput" />
+                <p:inputText value="#{memoFeesBean.memoFees.achStatusId}"  id="achStatusIdEditInput" 
+                    label="#{messages.field_label_memoFees_achStatusId}" />
+                <p:message for="achStatusIdEditInput" display="icon" />
+
+                <h:outputLabel value="#{messages.field_label_memoFees_ecollectStatusId}:" for="ecollectStatusIdEditInput" />
+                <p:inputText value="#{memoFeesBean.memoFees.ecollectStatusId}"  id="ecollectStatusIdEditInput" 
+                    label="#{messages.field_label_memoFees_ecollectStatusId}" />
+                <p:message for="ecollectStatusIdEditInput" display="icon" />
+
+                <h:outputLabel value="#{messages.field_label_memoFees_checkNumber}:" for="checkNumberEditInput" />
+                <p:inputText value="#{memoFeesBean.memoFees.checkNumber}" id="checkNumberEditInput" 
+                    label="#{messages.field_label_memoFees_checkNumber}" />
+                <p:message for="checkNumberEditInput" display="icon" />
+
+                <h:outputLabel value="#{messages.field_label_memoFees_arReceiptNumber}:" for="arReceiptNumberEditInput" />
+                <p:inputText value="#{memoFeesBean.memoFees.arReceiptNumber}" id="arReceiptNumberEditInput" 
+                    label="#{messages.field_label_memoFees_arReceiptNumber}" />
+                <p:message for="arReceiptNumberEditInput" display="icon" />
+
+                <h:outputLabel value="#{messages.field_label_memoFees_invoicePaymentDate}:" for="invoicePaymentDateEditInput" />
+                <p:calendar id="invoicePaymentDateEditInput" navigator="true" value="#{memoFeesBean.memoFees.invoicePaymentDate}" label="#{messages.field_label_memoFees_invoicePaymentDate}" />
+                <p:message for="invoicePaymentDateEditInput" display="icon" />
+
+                <h:outputLabel value="#{messages.field_label_memoFees_creditStatusId}:" for="creditStatusIdEditInput" />
+                <p:inputText value="#{memoFeesBean.memoFees.creditStatusId}"  id="creditStatusIdEditInput" 
+                    label="#{messages.field_label_memoFees_creditStatusId}" />
+                <p:message for="creditStatusIdEditInput" display="icon" />
+
+                <h:outputLabel value="#{messages.field_label_memoFees_creditInvoiceNumber}:" for="creditInvoiceNumberEditInput" />
+                <p:inputText value="#{memoFeesBean.memoFees.creditInvoiceNumber}" id="creditInvoiceNumberEditInput" 
+                    label="#{messages.field_label_memoFees_creditInvoiceNumber}" />
+                <p:message for="creditInvoiceNumberEditInput" display="icon" />
+
+                <h:outputLabel value="#{messages.field_label_memoFees_creditInvoiceDate}:" for="creditInvoiceDateEditInput" />
+                <p:calendar id="creditInvoiceDateEditInput" navigator="true" value="#{memoFeesBean.memoFees.creditInvoiceDate}" label="#{messages.field_label_memoFees_creditInvoiceDate}" />
+                <p:message for="creditInvoiceDateEditInput" display="icon" />
+
+            </p:panelGrid>
+
+        </p:outputPanel>
+</html>

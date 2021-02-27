@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:o="http://omnifaces.org/ui">
+<ui:composition template="/templates/layout.xhtml">
+  <ui:define name="content">
+
+    <h:form prependId="false" id="memoFeesDataForm" onkeypress="if (event.keyCode == 13) {return false; }">
+
+        <p:dataTable id="memoFeesTable" value="#{memoFeesBean.memoFeesList}" var="memoFees" resizableColumns="true" paginator="true"
+                paginatorTemplate=" {CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                rowsPerPageTemplate="5,10,25,50" rows="10" draggableColumns="true"
+                paginatorPosition="bottom" widgetVar="memoFeesTable" emptyMessage="#{messages.label_no_records_found}"
+                reflow="true">
+        
+          <f:facet name="header" >
+
+              <p:commandButton value="#{messages.create_new_memoFees}" icon="ui-icon-plusthick" action="#{memoFeesBean.prepareNewMemoFees()}"
+                      resetValues="true" update=":editMemoFeesDialog" oncomplete="PF('editMemoFeesDialogWidget').show()"
+                      rendered="#{memoFeesBean.isPermitted('memoFees:create')}" style="float:left" />
+              
+              <p:commandButton id="toggler" type="button" value="#{messages.table_select_columns}" icon="ui-icon-calculator" />
+              <p:columnToggler datasource="memoFeesTable" trigger="toggler" />
+          </f:facet>
+          
+          <p:column headerText="#{messages.field_label_memoFees_invoiceYear}" sortBy="#{memoFees.invoiceYear}" filterBy="#{memoFees.invoiceYear}">
+            <f:facet name="filter">
+                <p:inputText id="invoiceYearFilter"
+                        onkeypress="if (event.keyCode == 13) {PF('memoFeesTable').filter(); updateInvoiceYearFilter(); return false; }" >
+                    <p:remoteCommand name="updateInvoiceYearFilter" update="memoFeesTable:invoiceYearFilter" />
+                    <f:convertNumber integerOnly="true" />
+                </p:inputText>
+            </f:facet>
+            <h:outputText value="#{memoFees.invoiceYear}" ><f:convertNumber /></h:outputText>
+          </p:column>
+
+          <p:column headerText="#{messages.field_label_memoFees_invoiceMonth}" sortBy="#{memoFees.invoiceMonth}" filterBy="#{memoFees.invoiceMonth}">
+            <f:facet name="filter">
+                <p:inputText id="invoiceMonthFilter"
+                        onkeypress="if (event.keyCode == 13) {PF('memoFeesTable').filter(); updateInvoiceMonthFilter(); return false; }" >
+                    <p:remoteCommand name="updateInvoiceMonthFilter" update="memoFeesTable:invoiceMonthFilter" />
+                    <f:convertNumber integerOnly="true" />
+                </p:inputText>
+            </f:facet>
+            <h:outputText value="#{memoFees.invoiceMonth}" ><f:convertNumber /></h:outputText>
+          </p:column>
+
+          <p:column headerText="#{messages.field_label_memoFees_creationDate}" sortBy="#{memoFees.creationDate}" filterBy="#{memoFees.creationDate}">
+            <f:facet name="filter">
+                <p:inputText id="creationDateFilter"
+                        onkeyup="if (event.keyCode == 13) {PF('memoFeesTable').filter(); updateCreationDateFilter(); return false;}" >
+                    <p:remoteCommand name="updateCreationDateFilter" update="memoFeesTable:creationDateFilter" />
+                    <f:convertDateTime />
+                </p:inputText>
+            </f:facet>
+            <h:outputText value="#{memoFees.creationDate}"><f:convertDateTime /></h:outputText>
+          </p:column>
+
+          <p:column headerText="#{messages.field_label_memoFees_invoiceDate}" sortBy="#{memoFees.invoiceDate}" filterBy="#{memoFees.invoiceDate}">
+            <f:facet name="filter">
+                <p:inputText id="invoiceDateFilter"
+                        onkeyup="if (event.keyCode == 13) {PF('memoFeesTable').filter(); updateInvoiceDateFilter(); return false;}" >
+                    <p:remoteCommand name="updateInvoiceDateFilter" update="memoFeesTable:invoiceDateFilter" />
+                    <f:convertDateTime />
+                </p:inputText>
+            </f:facet>
+            <h:outputText value="#{memoFees.invoiceDate}"><f:convertDateTime /></h:outputText>
+          </p:column>
+
+          <p:column headerText="#{messages.field_label_memoFees_franchiseId}" sortBy="#{memoFees.franchiseId}" filterBy="#{memoFees.franchiseId}">
+            <f:facet name="filter">
+                <p:inputText id="franchiseIdFilter"
+                        onkeypress="if (event.keyCode == 13) {PF('memoFeesTable').filter(); updateFranchiseIdFilter(); return false; }" >
+                    <p:remoteCommand name="updateFranchiseIdFilter" update="memoFeesTable:franchiseIdFilter" />
+                    <f:convertNumber integerOnly="true" />
+                </p:inputText>
+            </f:facet>
+            <h:outputText value="#{memoFees.franchiseId}" ><f:convertNumber /></h:outputText>
+          </p:column>
+
+          <p:column  headerText="#{messages.field_label_memoFees_franchiseNumber}" sortBy="#{memoFees.franchiseNumber}" filterBy="#{memoFees.franchiseNumber}">
+            <f:facet name="filter">
+                <p:inputText id="franchiseNumberFilter"
+                        onkeypress="if (event.keyCode == 13) {PF('memoFeesTable').filter(); updateFranchiseNumberFilter(); return false; }" >
+                    <p:remoteCommand name="updateFranchiseNumberFilter" update="memoFeesTable:franchiseNumberFilter" />
+                </p:inputText>
+            </f:facet>
+            <h:outputText value="#{memoFees.franchiseNumber}" />
+          </p:column>
+
+          <p:column  headerText="#{messages.field_label_memoFees_franchiseStateProvinceId}" sortBy="#{memoFees.franchiseStateProvinceId}" filterBy="#{memoFees.franchiseStateProvinceId}">
+            <f:facet name="filter">
+                <p:inputText id="franchiseStateProvinceIdFilter"
+                        onkeypress="if (event.keyCode == 13) {PF('memoFeesTable').filter(); updateFranchiseStateProvinceIdFilter(); return false; }" >
+                    <p:remoteCommand name="updateFranchiseStateProvinceIdFilter" update="memoFeesTable:franchiseStateProvinceIdFilter" />
+                </p:inputText>
+            </f:facet>
+            <h:outputText value="#{memoFees.franchiseStateProvinceId}" />
+          </p:column>
+
+          <p:column  headerText="#{messages.field_label_memoFees_franchiseCountry}" sortBy="#{memoFees.franchiseCountry}" filterBy="#{memoFees.franchiseCountry}">
+            <f:facet name="filter">
+                <p:inputText id="franchiseCountryFilter"
+                        onkeypress="if (event.keyCode == 13) {PF('memoFeesTable').filter(); updateFranchiseCountryFilter(); return false; }" >
+                    <p:remoteCommand name="updateFranchiseCountryFilter" update="memoFeesTable:franchiseCountryFilter" />
+                </p:inputText>
+            </f:facet>
+            <h:outputText value="#{memoFees.franchiseCountry}" />
+          </p:column>
+
+          <p:column  headerText="#{messages.field_label_memoFees_amStatus}" sortBy="#{memoFees.amStatus}" filterBy="#{memoFees.amStatus}">
+            <f:facet name="filter">
+                <p:inputText id="amStatusFilter"
+                        onkeypress="if (event.keyCode == 13) {PF('memoFeesTable').filter(); updateAmStatusFilter(); return false; }" >
+                    <p:remoteCommand name="updateAmStatusFilter" update="memoFeesTable:amStatusFilter" />
+                </p:inputText>
+            </f:facet>
+            <h:outputText value="#{memoFees.amStatus}" />
+          </p:column>
+
+          <p:column  headerText="#{messages.field_label_memoFees_arCuid}" sortBy="#{memoFees.arCuid}" filterBy="#{memoFees.arCuid}">
+            <f:facet name="filter">
+                <p:inputText id="arCuidFilter"
+                        onkeypress="if (event.keyCode == 13) {PF('memoFeesTable').filter(); updateArCuidFilter(); return false; }" >
+                    <p:remoteCommand name="updateArCuidFilter" update="memoFeesTable:arCuidFilter" />
+                </p:inputText>
+            </f:facet>
+            <h:outputText value="#{memoFees.arCuid}" />
+          </p:column>
+
+          <p:column  headerText="#{messages.field_label_memoFees_arInvoiceNumber}" sortBy="#{memoFees.arInvoiceNumber}" filterBy="#{memoFees.arInvoiceNumber}">
+            <f:facet name="filter">
+                <p:inputText id="arInvoiceNumberFilter"
+                        onkeypress="if (event.keyCode == 13) {PF('memoFeesTable').filter(); updateArInvoiceNumberFilter(); return false; }" >
+                    <p:remoteCommand name="updateArInvoiceNumberFilter" update="memoFeesTable:arInvoiceNumberFilter" />
+                </p:inputText>
+            </f:facet>
+            <h:outputText value="#{memoFees.arInvoiceNumber}" />
+          </p:column>
+
+          <p:column headerText="#{messages.field_label_memoFees_amount}" sortBy="#{memoFees.amount}" filterBy="#{memoFees.amount}">
+            <f:facet name="filter">
+                <p:inputText id="amountFilter"
+                        onkeypress="if (event.keyCode == 13) {PF('memoFeesTable').filter(); updateAmountFilter(); return false; }" >
+                    <f:convertNumber />
+                    <p:remoteCommand name="updateAmountFilter" update="memoFeesTable:amountFilter" />
+                </p:inputText>
+            </f:facet>
+            <h:outputText value="#{memoFees.amount}"><f:convertNumber /></h:outputText>
+          </p:column>
+
+          <p:column headerText="#{messages.field_label_memoFees_taxes}" sortBy="#{memoFees.taxes}" filterBy="#{memoFees.taxes}">
+            <f:facet name="filter">
+                <p:inputText id="taxesFilter"
+                        onkeypress="if (event.keyCode == 13) {PF('memoFeesTable').filter(); updateTaxesFilter(); return false; }" >
+                    <f:convertNumber />
+                    <p:remoteCommand name="updateTaxesFilter" update="memoFeesTable:taxesFilter" />
+                </p:inputText>
+            </f:facet>
+            <h:outputText value="#{memoFees.taxes}"><f:convertNumber /></h:outputText>
+          </p:column>
+
+          <p:column headerText="#{messages.field_label_memoFees_achStatusId}" sortBy="#{memoFees.achStatusId}" filterBy="#{memoFees.achStatusId}">
+            <f:facet name="filter">
+                <p:inputText id="achStatusIdFilter"
+                        onkeypress="if (event.keyCode == 13) {PF('memoFeesTable').filter(); updateAchStatusIdFilter(); return false; }" >
+                    <p:remoteCommand name="updateAchStatusIdFilter" update="memoFeesTable:achStatusIdFilter" />
+                    <f:convertNumber integerOnly="true" />
+                </p:inputText>
+            </f:facet>
+            <h:outputText value="#{memoFees.achStatusId}" ><f:convertNumber /></h:outputText>
+          </p:column>
+
+          <p:column headerText="#{messages.field_label_memoFees_ecollectStatusId}" sortBy="#{memoFees.ecollectStatusId}" filterBy="#{memoFees.ecollectStatusId}">
+            <f:facet name="filter">
+                <p:inputText id="ecollectStatusIdFilter"
+                        onkeypress="if (event.keyCode == 13) {PF('memoFeesTable').filter(); updateEcollectStatusIdFilter(); return false; }" >
+                    <p:remoteCommand name="updateEcollectStatusIdFilter" update="memoFeesTable:ecollectStatusIdFilter" />
+                    <f:convertNumber integerOnly="true" />
+                </p:inputText>
+            </f:facet>
+            <h:outputText value="#{memoFees.ecollectStatusId}" ><f:convertNumber /></h:outputText>
+          </p:column>
+
+          <p:column  headerText="#{messages.field_label_memoFees_checkNumber}" sortBy="#{memoFees.checkNumber}" filterBy="#{memoFees.checkNumber}">
+            <f:facet name="filter">
+                <p:inputText id="checkNumberFilter"
+                        onkeypress="if (event.keyCode == 13) {PF('memoFeesTable').filter(); updateCheckNumberFilter(); return false; }" >
+                    <p:remoteCommand name="updateCheckNumberFilter" update="memoFeesTable:checkNumberFilter" />
+                </p:inputText>
+            </f:facet>
+            <h:outputText value="#{memoFees.checkNumber}" />
+          </p:column>
+
+          <p:column  headerText="#{messages.field_label_memoFees_arReceiptNumber}" sortBy="#{memoFees.arReceiptNumber}" filterBy="#{memoFees.arReceiptNumber}">
+            <f:facet name="filter">
+                <p:inputText id="arReceiptNumberFilter"
+                        onkeypress="if (event.keyCode == 13) {PF('memoFeesTable').filter(); updateArReceiptNumberFilter(); return false; }" >
+                    <p:remoteCommand name="updateArReceiptNumberFilter" update="memoFeesTable:arReceiptNumberFilter" />
+                </p:inputText>
+            </f:facet>
+            <h:outputText value="#{memoFees.arReceiptNumber}" />
+          </p:column>
+
+          <p:column headerText="#{messages.field_label_memoFees_invoicePaymentDate}" sortBy="#{memoFees.invoicePaymentDate}" filterBy="#{memoFees.invoicePaymentDate}">
+            <f:facet name="filter">
+                <p:inputText id="invoicePaymentDateFilter"
+                        onkeyup="if (event.keyCode == 13) {PF('memoFeesTable').filter(); updateInvoicePaymentDateFilter(); return false;}" >
+                    <p:remoteCommand name="updateInvoicePaymentDateFilter" update="memoFeesTable:invoicePaymentDateFilter" />
+                    <f:convertDateTime />
+                </p:inputText>
+            </f:facet>
+            <h:outputText value="#{memoFees.invoicePaymentDate}"><f:convertDateTime /></h:outputText>
+          </p:column>
+
+          <p:column headerText="#{messages.field_label_memoFees_creditStatusId}" sortBy="#{memoFees.creditStatusId}" filterBy="#{memoFees.creditStatusId}">
+            <f:facet name="filter">
+                <p:inputText id="creditStatusIdFilter"
+                        onkeypress="if (event.keyCode == 13) {PF('memoFeesTable').filter(); updateCreditStatusIdFilter(); return false; }" >
+                    <p:remoteCommand name="updateCreditStatusIdFilter" update="memoFeesTable:creditStatusIdFilter" />
+                    <f:convertNumber integerOnly="true" />
+                </p:inputText>
+            </f:facet>
+            <h:outputText value="#{memoFees.creditStatusId}" ><f:convertNumber /></h:outputText>
+          </p:column>
+
+          <p:column  headerText="#{messages.field_label_memoFees_creditInvoiceNumber}" sortBy="#{memoFees.creditInvoiceNumber}" filterBy="#{memoFees.creditInvoiceNumber}">
+            <f:facet name="filter">
+                <p:inputText id="creditInvoiceNumberFilter"
+                        onkeypress="if (event.keyCode == 13) {PF('memoFeesTable').filter(); updateCreditInvoiceNumberFilter(); return false; }" >
+                    <p:remoteCommand name="updateCreditInvoiceNumberFilter" update="memoFeesTable:creditInvoiceNumberFilter" />
+                </p:inputText>
+            </f:facet>
+            <h:outputText value="#{memoFees.creditInvoiceNumber}" />
+          </p:column>
+
+          <p:column headerText="#{messages.field_label_memoFees_creditInvoiceDate}" sortBy="#{memoFees.creditInvoiceDate}" filterBy="#{memoFees.creditInvoiceDate}">
+            <f:facet name="filter">
+                <p:inputText id="creditInvoiceDateFilter"
+                        onkeyup="if (event.keyCode == 13) {PF('memoFeesTable').filter(); updateCreditInvoiceDateFilter(); return false;}" >
+                    <p:remoteCommand name="updateCreditInvoiceDateFilter" update="memoFeesTable:creditInvoiceDateFilter" />
+                    <f:convertDateTime />
+                </p:inputText>
+            </f:facet>
+            <h:outputText value="#{memoFees.creditInvoiceDate}"><f:convertDateTime /></h:outputText>
+          </p:column>
+
+          <p:column styleClass="action-column" headerText="#{messages.table_actions_column}" width="115" exportable="false">
+            
+            <p:commandButton icon="ui-icon-zoomin" update=":viewMemoFeesDialog" oncomplete="PF('viewMemoFeesDialogWidget').show()" title="#{messages.label_view}">
+              <f:setPropertyActionListener value="#{memoFees}" target="#{memoFeesBean.memoFees}" />
+            </p:commandButton>
+
+            <p:commandButton icon="ui-icon-pencil" update=":editMemoFeesDialog"
+                resetValues="true" rendered="#{memoFeesBean.isPermitted(memoFees, 'memoFees:update')}"
+                action="#{memoFeesBean.onDialogOpen(memoFees)}"
+                oncomplete="PF('editMemoFeesDialogWidget').show()"
+                title="#{messages.label_edit}" >
+            </p:commandButton>
+
+            <p:commandButton icon="ui-icon-close" rendered="#{memoFeesBean.isPermitted(memoFees, 'memoFees:delete')}"
+                oncomplete="PF('deleteMemoFeesDialogWidget').show()"
+                title="#{messages.label_delete}" >
+                <f:setPropertyActionListener value="#{memoFees}"
+                    target="#{memoFeesBean.memoFees}" />
+            </p:commandButton>
+    
+          </p:column>
+          
+        </p:dataTable>
+        
+    </h:form>
+
+    <p:confirmDialog id="deleteMemoFeesDialog" widgetVar="deleteMemoFeesDialogWidget"
+        rendered="#{memoFeesBean.isPermitted(memoFeesBean.memoFees, 'memoFees:delete')}" header="#{messages.label_confirm_deletion}"
+        severity="alarm">
+        <f:facet name="message"><h:outputText value="#{messages.label_delete_record}" escape="false"/></f:facet>
+        <p:outputPanel>
+          <h:form>
+            <div style="text-align: center; margin:10px">
+              <p:commandButton value="#{messages.label_yes}" action="#{memoFeesBean.delete}" update=":memoFeesDataForm :growlForm:growl" oncomplete="PF('deleteMemoFeesDialogWidget').hide()" />
+              <p:commandButton value="#{messages.label_no}" onclick="PF('deleteMemoFeesDialogWidget').hide()" type="button" />
+            </div>
+          </h:form>
+        </p:outputPanel>
+    </p:confirmDialog>
+    
+    <p:dialog dynamic="true" id="editMemoFeesDialog" header="#{messages.label_memoFees_caption}"
+            modal="true" widgetVar="editMemoFeesDialogWidget" maximizable="true">
+        <p:ajax event="close" listener="#{memoFeesBean.reset}"/>
+        <h:form id="editMemoFeesForm" >
+            <p:outputPanel id="memoFeesEditPanel">
+                <ui:include src="/pages/memoFees/memoFeesEditInclude.xhtml"/>
+                <div style="text-align: center; margin:10px">
+                    <p:commandButton value="#{messages.label_save}"
+                            icon="ui-icon-disk" action="#{memoFeesBean.persist}"
+                            update=":editMemoFeesForm:memoFeesEditPanel :memoFeesDataForm :growlForm:growl"
+                            oncomplete="if(!args.validationFailed) PF('editMemoFeesDialogWidget').hide()" />
+                    <p:commandButton value="#{messages.label_close}" icon="ui-icon-close" onclick="PF('editMemoFeesDialogWidget').hide()" type="button" />
+                </div>
+            </p:outputPanel>
+        </h:form>
+    </p:dialog>
+    
+    <p:dialog dynamic="true" id="viewMemoFeesDialog" header="#{messages.label_memoFees_caption}" modal="true" widgetVar="viewMemoFeesDialogWidget" maximizable="true">
+        <p:ajax event="close" listener="#{memoFeesBean.reset}" />
+        <h:form id="viewMemoFeesForm">
+          <ui:include src="/pages/memoFees/memoFeesViewInclude.xhtml"/>
+          <div style="text-align: center; margin:10px">
+              <p:commandButton value="#{messages.label_close}" icon="ui-icon-close" onclick="PF('viewMemoFeesDialogWidget').hide()" type="button" />
+          </div>
+        </h:form>
+    </p:dialog>
+    
+  </ui:define>
+</ui:composition>
+</html>
