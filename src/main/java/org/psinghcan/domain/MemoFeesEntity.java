@@ -14,11 +14,9 @@ import javax.validation.constraints.Size;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-@Entity
+@Entity(name = "memofees")
 @Table(name="memo_fees")
-public class MemoFeesEntity extends BaseEntity implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class MemoFeesEntity implements Serializable {
 
     @Id
     @SequenceGenerator(name="memo_fees_key",

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition>
+
+   <p:dialog id="MemoFeesViewDlg" widgetVar="MemoFeesViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewMemoFeesTitle}">
+      <h:form id="MemoFeesViewForm">
+         <h:panelGroup id="display">
+            <p:panelGrid columns="2" rendered="#{memoFeesController.selected != null}">
+               <h:outputText value="#{bundle.ViewMemoFeesLabel_memoFeesId}"/>
+               <h:outputText value="#{memoFeesController.selected.memoFeesId}" title="#{bundle.ViewMemoFeesTitle_memoFeesId}"/>
+               <h:outputText value="#{bundle.ViewMemoFeesLabel_invoiceYear}"/>
+               <h:outputText value="#{memoFeesController.selected.invoiceYear}" title="#{bundle.ViewMemoFeesTitle_invoiceYear}"/>
+               <h:outputText value="#{bundle.ViewMemoFeesLabel_invoiceMonth}"/>
+               <h:outputText value="#{memoFeesController.selected.invoiceMonth}" title="#{bundle.ViewMemoFeesTitle_invoiceMonth}"/>
+               <h:outputText value="#{bundle.ViewMemoFeesLabel_creationDate}"/>
+               <h:outputText value="#{memoFeesController.selected.creationDate}" title="#{bundle.ViewMemoFeesTitle_creationDate}">
+                  <f:convertDateTime pattern="MM/dd/yyyy" />
+               </h:outputText>
+               <h:outputText value="#{bundle.ViewMemoFeesLabel_invoiceDate}"/>
+               <h:outputText value="#{memoFeesController.selected.invoiceDate}" title="#{bundle.ViewMemoFeesTitle_invoiceDate}">
+                  <f:convertDateTime pattern="MM/dd/yyyy" />
+               </h:outputText>
+               <h:outputText value="#{bundle.ViewMemoFeesLabel_franchiseId}"/>
+               <h:outputText value="#{memoFeesController.selected.franchiseId}" title="#{bundle.ViewMemoFeesTitle_franchiseId}"/>
+               <h:outputText value="#{bundle.ViewMemoFeesLabel_franchiseNumber}"/>
+               <h:outputText value="#{memoFeesController.selected.franchiseNumber}" title="#{bundle.ViewMemoFeesTitle_franchiseNumber}"/>
+               <h:outputText value="#{bundle.ViewMemoFeesLabel_franchiseStateProvinceId}"/>
+               <h:outputText value="#{memoFeesController.selected.franchiseStateProvinceId}" title="#{bundle.ViewMemoFeesTitle_franchiseStateProvinceId}"/>
+               <h:outputText value="#{bundle.ViewMemoFeesLabel_franchiseCountry}"/>
+               <h:outputText value="#{memoFeesController.selected.franchiseCountry}" title="#{bundle.ViewMemoFeesTitle_franchiseCountry}"/>
+               <h:outputText value="#{bundle.ViewMemoFeesLabel_amStatus}"/>
+               <h:outputText value="#{memoFeesController.selected.amStatus}" title="#{bundle.ViewMemoFeesTitle_amStatus}"/>
+               <h:outputText value="#{bundle.ViewMemoFeesLabel_arCuid}"/>
+               <h:outputText value="#{memoFeesController.selected.arCuid}" title="#{bundle.ViewMemoFeesTitle_arCuid}"/>
+               <h:outputText value="#{bundle.ViewMemoFeesLabel_arInvoiceNumber}"/>
+               <h:outputText value="#{memoFeesController.selected.arInvoiceNumber}" title="#{bundle.ViewMemoFeesTitle_arInvoiceNumber}"/>
+               <h:outputText value="#{bundle.ViewMemoFeesLabel_amount}"/>
+               <h:outputText value="#{memoFeesController.selected.amount}" title="#{bundle.ViewMemoFeesTitle_amount}"/>
+               <h:outputText value="#{bundle.ViewMemoFeesLabel_taxes}"/>
+               <h:outputText value="#{memoFeesController.selected.taxes}" title="#{bundle.ViewMemoFeesTitle_taxes}"/>
+               <h:outputText value="#{bundle.ViewMemoFeesLabel_achStatusId}"/>
+               <h:outputText value="#{memoFeesController.selected.achStatusId}" title="#{bundle.ViewMemoFeesTitle_achStatusId}"/>
+               <h:outputText value="#{bundle.ViewMemoFeesLabel_ecollectStatusId}"/>
+               <h:outputText value="#{memoFeesController.selected.ecollectStatusId}" title="#{bundle.ViewMemoFeesTitle_ecollectStatusId}"/>
+               <h:outputText value="#{bundle.ViewMemoFeesLabel_checkNumber}"/>
+               <h:outputText value="#{memoFeesController.selected.checkNumber}" title="#{bundle.ViewMemoFeesTitle_checkNumber}"/>
+               <h:outputText value="#{bundle.ViewMemoFeesLabel_arReceiptNumber}"/>
+               <h:outputText value="#{memoFeesController.selected.arReceiptNumber}" title="#{bundle.ViewMemoFeesTitle_arReceiptNumber}"/>
+               <h:outputText value="#{bundle.ViewMemoFeesLabel_invoicePaymentDate}"/>
+               <h:outputText value="#{memoFeesController.selected.invoicePaymentDate}" title="#{bundle.ViewMemoFeesTitle_invoicePaymentDate}">
+                  <f:convertDateTime pattern="MM/dd/yyyy" />
+               </h:outputText>
+               <h:outputText value="#{bundle.ViewMemoFeesLabel_creditStatusId}"/>
+               <h:outputText value="#{memoFeesController.selected.creditStatusId}" title="#{bundle.ViewMemoFeesTitle_creditStatusId}"/>
+               <h:outputText value="#{bundle.ViewMemoFeesLabel_creditInvoiceNumber}"/>
+               <h:outputText value="#{memoFeesController.selected.creditInvoiceNumber}" title="#{bundle.ViewMemoFeesTitle_creditInvoiceNumber}"/>
+               <h:outputText value="#{bundle.ViewMemoFeesLabel_creditInvoiceDate}"/>
+               <h:outputText value="#{memoFeesController.selected.creditInvoiceDate}" title="#{bundle.ViewMemoFeesTitle_creditInvoiceDate}">
+                  <f:convertDateTime pattern="MM/dd/yyyy" />
+               </h:outputText>
+            </p:panelGrid>
+            <p:commandButton value="#{bundle.Close}" onclick="MemoFeesViewDialog.hide()"/>
+         </h:panelGroup>
+      </h:form>
+   </p:dialog>
+
+</ui:composition>
+</html>

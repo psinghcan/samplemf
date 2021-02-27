@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition>
+
+   <p:dialog id="MemoFeesEditDlg" widgetVar="MemoFeesEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditMemoFeesTitle}">
+      <h:form id="MemoFeesEditForm">
+         <h:panelGroup id="display">
+            <p:panelGrid columns="2" rendered="#{memoFeesController.selected != null}">
+               <p:outputLabel value="#{bundle.EditMemoFeesLabel_memoFeesId}" for="memoFeesId" />
+               <p:inputText id="memoFeesId" value="#{memoFeesController.selected.memoFeesId}" title="#{bundle.EditMemoFeesTitle_memoFeesId}" required="true" requiredMessage="#{bundle.EditMemoFeesRequiredMessage_memoFeesId}"/>
+               <p:outputLabel value="#{bundle.EditMemoFeesLabel_invoiceYear}" for="invoiceYear" />
+               <p:inputText id="invoiceYear" value="#{memoFeesController.selected.invoiceYear}" title="#{bundle.EditMemoFeesTitle_invoiceYear}" required="true" requiredMessage="#{bundle.EditMemoFeesRequiredMessage_invoiceYear}"/>
+               <p:outputLabel value="#{bundle.EditMemoFeesLabel_invoiceMonth}" for="invoiceMonth" />
+               <p:inputText id="invoiceMonth" value="#{memoFeesController.selected.invoiceMonth}" title="#{bundle.EditMemoFeesTitle_invoiceMonth}" required="true" requiredMessage="#{bundle.EditMemoFeesRequiredMessage_invoiceMonth}"/>
+               <p:outputLabel value="#{bundle.EditMemoFeesLabel_creationDate}" for="creationDate" />
+               <p:calendar id="creationDate" pattern="MM/dd/yyyy" value="#{memoFeesController.selected.creationDate}" title="#{bundle.EditMemoFeesTitle_creationDate}"  showOn="button"/>
+               <p:outputLabel value="#{bundle.EditMemoFeesLabel_invoiceDate}" for="invoiceDate" />
+               <p:calendar id="invoiceDate" pattern="MM/dd/yyyy" value="#{memoFeesController.selected.invoiceDate}" title="#{bundle.EditMemoFeesTitle_invoiceDate}"  showOn="button"/>
+               <p:outputLabel value="#{bundle.EditMemoFeesLabel_franchiseId}" for="franchiseId" />
+               <p:inputText id="franchiseId" value="#{memoFeesController.selected.franchiseId}" title="#{bundle.EditMemoFeesTitle_franchiseId}" />
+               <p:outputLabel value="#{bundle.EditMemoFeesLabel_franchiseNumber}" for="franchiseNumber" />
+               <p:inputText id="franchiseNumber" value="#{memoFeesController.selected.franchiseNumber}" title="#{bundle.EditMemoFeesTitle_franchiseNumber}" />
+               <p:outputLabel value="#{bundle.EditMemoFeesLabel_franchiseStateProvinceId}" for="franchiseStateProvinceId" />
+               <p:inputText id="franchiseStateProvinceId" value="#{memoFeesController.selected.franchiseStateProvinceId}" title="#{bundle.EditMemoFeesTitle_franchiseStateProvinceId}" />
+               <p:outputLabel value="#{bundle.EditMemoFeesLabel_franchiseCountry}" for="franchiseCountry" />
+               <p:inputText id="franchiseCountry" value="#{memoFeesController.selected.franchiseCountry}" title="#{bundle.EditMemoFeesTitle_franchiseCountry}" />
+               <p:outputLabel value="#{bundle.EditMemoFeesLabel_amStatus}" for="amStatus" />
+               <p:inputText id="amStatus" value="#{memoFeesController.selected.amStatus}" title="#{bundle.EditMemoFeesTitle_amStatus}" />
+               <p:outputLabel value="#{bundle.EditMemoFeesLabel_arCuid}" for="arCuid" />
+               <p:inputText id="arCuid" value="#{memoFeesController.selected.arCuid}" title="#{bundle.EditMemoFeesTitle_arCuid}" />
+               <p:outputLabel value="#{bundle.EditMemoFeesLabel_arInvoiceNumber}" for="arInvoiceNumber" />
+               <p:inputText id="arInvoiceNumber" value="#{memoFeesController.selected.arInvoiceNumber}" title="#{bundle.EditMemoFeesTitle_arInvoiceNumber}" />
+               <p:outputLabel value="#{bundle.EditMemoFeesLabel_amount}" for="amount" />
+               <p:inputText id="amount" value="#{memoFeesController.selected.amount}" title="#{bundle.EditMemoFeesTitle_amount}" />
+               <p:outputLabel value="#{bundle.EditMemoFeesLabel_taxes}" for="taxes" />
+               <p:inputText id="taxes" value="#{memoFeesController.selected.taxes}" title="#{bundle.EditMemoFeesTitle_taxes}" />
+               <p:outputLabel value="#{bundle.EditMemoFeesLabel_achStatusId}" for="achStatusId" />
+               <p:inputText id="achStatusId" value="#{memoFeesController.selected.achStatusId}" title="#{bundle.EditMemoFeesTitle_achStatusId}" />
+               <p:outputLabel value="#{bundle.EditMemoFeesLabel_ecollectStatusId}" for="ecollectStatusId" />
+               <p:inputText id="ecollectStatusId" value="#{memoFeesController.selected.ecollectStatusId}" title="#{bundle.EditMemoFeesTitle_ecollectStatusId}" />
+               <p:outputLabel value="#{bundle.EditMemoFeesLabel_checkNumber}" for="checkNumber" />
+               <p:inputText id="checkNumber" value="#{memoFeesController.selected.checkNumber}" title="#{bundle.EditMemoFeesTitle_checkNumber}" />
+               <p:outputLabel value="#{bundle.EditMemoFeesLabel_arReceiptNumber}" for="arReceiptNumber" />
+               <p:inputText id="arReceiptNumber" value="#{memoFeesController.selected.arReceiptNumber}" title="#{bundle.EditMemoFeesTitle_arReceiptNumber}" />
+               <p:outputLabel value="#{bundle.EditMemoFeesLabel_invoicePaymentDate}" for="invoicePaymentDate" />
+               <p:calendar id="invoicePaymentDate" pattern="MM/dd/yyyy" value="#{memoFeesController.selected.invoicePaymentDate}" title="#{bundle.EditMemoFeesTitle_invoicePaymentDate}"  showOn="button"/>
+               <p:outputLabel value="#{bundle.EditMemoFeesLabel_creditStatusId}" for="creditStatusId" />
+               <p:inputText id="creditStatusId" value="#{memoFeesController.selected.creditStatusId}" title="#{bundle.EditMemoFeesTitle_creditStatusId}" />
+               <p:outputLabel value="#{bundle.EditMemoFeesLabel_creditInvoiceNumber}" for="creditInvoiceNumber" />
+               <p:inputText id="creditInvoiceNumber" value="#{memoFeesController.selected.creditInvoiceNumber}" title="#{bundle.EditMemoFeesTitle_creditInvoiceNumber}" />
+               <p:outputLabel value="#{bundle.EditMemoFeesLabel_creditInvoiceDate}" for="creditInvoiceDate" />
+               <p:calendar id="creditInvoiceDate" pattern="MM/dd/yyyy" value="#{memoFeesController.selected.creditInvoiceDate}" title="#{bundle.EditMemoFeesTitle_creditInvoiceDate}"  showOn="button"/>
+            </p:panelGrid>
+            <p:commandButton actionListener="#{memoFeesController.update}" value="#{bundle.Save}" update="display,:MemoFeesListForm:datalist,:growl" oncomplete="handleSubmit(args, 'MemoFeesEditDialog');"/>
+            <p:commandButton value="#{bundle.Cancel}" onclick="MemoFeesEditDialog.hide()"/>
+         </h:panelGroup>
+      </h:form>
+   </p:dialog>
+
+</ui:composition>
+</html>
